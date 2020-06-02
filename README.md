@@ -14,8 +14,8 @@ A ideia para esse jogo surgiu de um trabalho da faculdade, cujo o objetivo era d
 * ps²: O placar de jogadores possui espaço para no máximo 5 jogadores
 
 ## Sobre essa versão beta_1.0.1
-Versão lançada para testar a responsividade e comunicação entre os componentes do jogo, para fazer o download do arquivo .apk dessa versão clique [aqui]()
+Versão lançada para testar a responsividade e comunicação entre os componentes do jogo, para fazer o download do arquivo .apk dessa versão clique [aqui](https://expo.io/artifacts/f1002257-4a73-4b2a-a87c-83068ec644a5)
 
 ## Para a próxima versão
 - [ ] Adicionar AdMob nos espaços reservados
-- [ ] Adicionar tela de boas vindas e menu de escolha do level
+- [ ] Adicionar segundo idioma
