@@ -3,5 +3,5 @@ A ideia para esse jogo surgiu de um trabalho da faculdade, cujo o objetivo era d
 
 ```
  Esse projeto foi criado utilizando o Expo Tools, para saber como
- instalar e inicar o projeto em sua maquina clique [aqui]:(https://docs.expo.io/get-started/installation/)
+ instalar e inicar o projeto em sua maquina clique [aqui]:<https://docs.expo.io/get-started/installation/>
 ```
