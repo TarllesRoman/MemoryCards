@@ -4,7 +4,8 @@ import { MaterialCommunityIcons, Feather } from '@expo/vector-icons';
 
 import styles from './styles';
 import Footer from '../../components/Footer';
-import { getWinners } from '../../constant';
+import { getWinners } from '../../../resources/tools';
+import { t } from "../../../resources/locales";
 
 const trophy_colors = ['#FFD700', '#C0C0C0', '#B8860B', '#A0522D', '#8B4513'];
 const suite_colors = ['#000', '#DC143C'];
@@ -26,22 +27,22 @@ export default class Scoreboard extends Component {
             case "easy":
                 this.icon = "cards-diamond";
                 this.iconColor = suite_colors[1];
-                this.level = "Fácil";
+                this.level = t('easy');
                 break;
             case "medium":
                 this.icon = "cards-spade";
                 this.iconColor = suite_colors[0];
-                this.level = "Médio";
+                this.level = t('medium');
                 break;
             case "hard":
                 this.icon = "cards-heart";
                 this.iconColor = suite_colors[1];
-                this.level = "Difícil";
+                this.level = t('hard');
                 break;
             case "unfair":
                 this.icon = "cards-club";
                 this.iconColor = suite_colors[0];
-                this.level = "Injusto";
+                this.level = t('unfair');
                 break;
         }
         this.loadWinners();
@@ -72,15 +73,15 @@ export default class Scoreboard extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.header} >
-                    <Text style={styles.title}>Placar</Text>
+                    <Text style={styles.title}>{ t('scoreb') }</Text>
                     <MaterialCommunityIcons name={this.icon} size={50} color={this.iconColor} />
-                    <Text style={styles.headerText}>Nível: {this.level}</Text>
+                    <Text style={styles.headerText}>{ t('difficulty') }: {this.level}</Text>
                 </View>
 
 
                 <View style={styles.listHeader}>
-                    <Text style={styles.headerText}>Posição</Text>
-                    <Text style={styles.headerText}>Jogadas</Text>
+                    <Text style={styles.headerText}>{ t('position') }</Text>
+                    <Text style={styles.headerText}>{ t('attempts') }</Text>
                 </View>
 
                 <View style={styles.playerList}>

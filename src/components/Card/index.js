@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import { Animated, Easing, TouchableOpacity, Image } from 'react-native';
 
 import styles from './styles';
+import { TIME } from '../../../resources/dimensions';
 
 /**
  * Abre todas as cartas do array utilizando o metodo Animated.stagger,
  *  cada carta demora 1" para abrir e o atraso entre cada animação é de 100ms
  */
 export function open_all (cards) {
-    Animated.stagger(100, 
+    Animated.stagger(TIME.stagger, 
         cards.map( card => {
             return Animated.timing( card.state.zspin, {
                 toValue: 2,
-                duration: 1000,
+                duration: TIME.open,
                 asing: Easing.linear
             })
         })
@@ -29,12 +30,12 @@ export function close_all (cards) {
     sequence_1 = cards.map( card => {
         return Animated.timing( card.state.zspin, {
             toValue: 0,
-            duration: 1000,
+            duration: TIME.close,
             asing: Easing.linear
         })
     });
 
-    Animated.stagger(100, sequence_1).start( ); 
+    Animated.stagger(TIME.stagger, sequence_1).start( ); 
 }
 
 /**
@@ -81,7 +82,7 @@ export default class Card extends Component {
     _open = () => {
         Animated.timing( this.state.zspin, {
             toValue: 2,
-            duration: 1000,
+            duration: TIME.open,
             asing: Easing.linear
         }).start();
     }
@@ -90,7 +91,7 @@ export default class Card extends Component {
     _close = () => {
         Animated.timing( this.state.zspin, {
             toValue: 0,
-            duration: 1000,
+            duration: TIME.close,
             asing: Easing.linear
         }).start();
     }
@@ -99,7 +100,7 @@ export default class Card extends Component {
     _slideVertically = (to) => {
         Animated.timing(this.state.yval, {
             toValue: to,
-            duration: 1000,
+            duration: TIME.slide_vertically,
             asing: Easing.linear
         }).start();
     }
@@ -108,7 +109,7 @@ export default class Card extends Component {
     _slideHorizontally = (to) => {
         Animated.timing(this.state.xval, {
             toValue: to,
-            duration: 1000,
+            duration: TIME.slide_horizontally,
             asing: Easing.linear
         }).start();
     }

@@ -4,7 +4,8 @@ import { View, Modal, Text, TouchableHighlight, TextInput } from 'react-native';
 import styles, {modal_styles} from './styles';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import { createWinner, storeWinners, getWinners } from '../../constant';
+import { createWinner, storeWinners, getWinners } from '../../../resources/tools';
+import { t } from "../../../resources/locales";
 
 //Posteriormente o level será passado por parametro a partir da tela de escolha do usuario
 import Medium from '../../components/Levels/Medium';
@@ -15,7 +16,7 @@ export default class Game extends Component {
         this.state = {
             modal: false,
             modalwin: false,
-            name: 'Nome',
+            name: t('_name'),
         }
 
         this.header_ref = createRef();
@@ -47,7 +48,7 @@ export default class Game extends Component {
 
     _reset = () => {
         this.attempts = 0;
-        this.setState({name: 'nome'});
+        this.setState({name: t('_name')});
         this.header_ref.current._resetCounters();
         this.level_ref.current._reinit();
     }
@@ -82,15 +83,15 @@ export default class Game extends Component {
                 <Modal animationType="slide" transparent={true} visible={this.state.modal}>
                     <View style={modal_styles.container}>
                         <View style={modal_styles.view}>
-                            <Text style={[modal_styles.text, {fontSize: 30}]}>PARABÉNS!!</Text>
-                            <Text style={modal_styles.text}>{`Total de jogadas: ${this.attempts}`}</Text>
+                            <Text style={[modal_styles.text, {fontSize: 30}]}>{ t('congrats') }!!</Text>
+                            <Text style={modal_styles.text}>{ t('total_att') }: {this.attempts}</Text>
                             <View style={modal_styles.buttonGroup}>
                                 <TouchableHighlight style={modal_styles.button} onPress={() => this.setState({modal: false})}>
-                                    <Text style={modal_styles.buttonText}>Voltar</Text>
+                                    <Text style={modal_styles.buttonText}>{ t('back') }</Text>
                                 </TouchableHighlight>
                                 <TouchableHighlight style={[modal_styles.button, {marginLeft: 10}]}
                                  onPress={this._navigateToScoreboard}>
-                                    <Text style={modal_styles.buttonText}>Placar</Text>
+                                    <Text style={modal_styles.buttonText}>{ t('scoreb') }</Text>
                                 </TouchableHighlight>
                             </View>
                         </View>
@@ -101,8 +102,8 @@ export default class Game extends Component {
                 <Modal animationType="slide" transparent={true} visible={this.state.modalwin}>
                     <View style={modal_styles.container}>
                         <View style={modal_styles.view}>
-                            <Text style={[modal_styles.text, {fontSize: 30}]}>PARABÉNS!!</Text>
-                            <Text style={modal_styles.text}>{`Total de jogadas: ${this.attempts}`}</Text>
+                            <Text style={[modal_styles.text, {fontSize: 30}]}>{ t('congrats') }!!</Text>
+                            <Text style={modal_styles.text}>{ t('total_att') }: {this.attempts}</Text>
                             <TextInput style={modal_styles.input}
                                 onChangeText={text => this.setState({name: text})}
                                 value={this.state.name}
@@ -111,11 +112,11 @@ export default class Game extends Component {
                             />
                             <View style={modal_styles.buttonGroup}>
                                 <TouchableHighlight style={modal_styles.button} onPress={() => this.setState({modalwin: false})}>
-                                    <Text style={modal_styles.buttonText}>Voltar</Text>
+                                    <Text style={modal_styles.buttonText}>{ t('back') }</Text>
                                 </TouchableHighlight>
                                 <TouchableHighlight style={[modal_styles.button, {marginLeft: 10}]}
                                  onPress={this._savePlayer}>
-                                    <Text style={modal_styles.buttonText}>Salvar</Text>
+                                    <Text style={modal_styles.buttonText}>{ t('save') }</Text>
                                 </TouchableHighlight>
                             </View>
                         </View>

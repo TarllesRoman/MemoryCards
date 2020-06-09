@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
-import { CARD_DIMENSIONS } from '../../constant'
+import { CARD } from '../../../resources/dimensions';
 
 export default StyleSheet.create({
     cardImage: {
-        height: CARD_DIMENSIONS.height,
-        width: CARD_DIMENSIONS.width,
+        height: CARD.height,
+        width: CARD.width,
         borderRadius: 5,
     },
     card: {

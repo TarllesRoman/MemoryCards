@@ -4,10 +4,11 @@ import { Audio } from 'expo-av';
 
 import styles from './styles';
 import Card, { open_all, close_all } from '../../Card';
-import  { delay, shuffle, playSound, CONTAINER_DIMENSIONS } from '../../../constant';
+import { CONTAINER, TIME } from '../../../../resources/dimensions';
+import  { delay, shuffle, playSound } from '../../../../resources/tools';
 
-const slide_vertical_value = CONTAINER_DIMENSIONS.height/2.0 + 15
-const slide_horizontal_value = (CONTAINER_DIMENSIONS.width/3.0) * 2
+const slide_vertical_value = CONTAINER.height/2.0 + 15
+const slide_horizontal_value = (CONTAINER.width/3.0) * 2
 
 const deck = '../../../../assets/Decks/Mask/Spades/';
 const card_images = [
@@ -38,7 +39,7 @@ export default class Medium extends Component {
             [createRef(), createRef(), createRef()],
             [createRef(), createRef(), createRef()],
         ];
-        this.next = 1;
+        this.next = 0;
         this.attempts = 0;
         this.running = false;
     }
@@ -77,29 +78,35 @@ export default class Medium extends Component {
         });
     }
 
-    _init = async () => {
+    //Recebe o tempo de renderização das cartas, aguarda tal tempo antes de iniciar o jogo
+    _init = async (wait) => {
         if(this.running) return;
         else this.running = true;
 
+        await delay(wait);
+
         //Mostra todas as cartas e após 2" começa a embaralhar
         this.open_cards();
-        await delay(3000);
+        await delay(TIME.open + (TIME.stagger * 9));
 
         // Embaralhamento 1, troca a primeira e ultima linhas
         this.move_line(slide_vertical_value, this.cards_ref[0]);
         this.move_line(slide_vertical_value * -1, this.cards_ref[2]);
         playSound(SOUNDS.shuffle);
-        await delay(2000);
+        await delay(TIME.slide_vertically);
+
         // Embaralhamento 2, troca a primeira e ultima colunas
         this.move_column(slide_horizontal_value,
             this.cards_ref[0][0], this.cards_ref[1][0], this.cards_ref[2][0]);
         this.move_column(slide_horizontal_value * -1,
             this.cards_ref[0][2], this.cards_ref[1][2], this.cards_ref[2][2]);
         playSound(SOUNDS.shuffle);
+        await delay(TIME.slide_horizontally + TIME.toshow);
 
-        //Depois de embaralhar aguarda 2" e fecha as cartas
-        await delay(3000);
+        //Depois de embaralhar fecha as cartas
         this.close_cards();
+        await delay(TIME.close + (TIME.stagger * 9));
+        this.next = 1;
 
         this.running = false;
     }
@@ -115,8 +122,8 @@ export default class Medium extends Component {
     _reinit = async () => {
         if(this.running) return; else this.running = true;
         // >Fecha todas as cartas,
-        this.close_cards(false);
-        await delay(200 * (this.next - 1));
+        this.close_cards();
+        await delay(TIME.close + (TIME.stagger * (this.next-1)));
 
         // >Volta as cartas para a sua posição original
         this.move_column(0,
@@ -124,11 +131,11 @@ export default class Medium extends Component {
         this.move_column(0,
             this.cards_ref[0][2], this.cards_ref[1][2], this.cards_ref[2][2]);
         playSound(SOUNDS.shuffle);
-        await delay(1000);
+        await delay(TIME.slide_horizontally);
         this.move_line(0, this.cards_ref[0]);
         this.move_line(0, this.cards_ref[2]);
         playSound(SOUNDS.shuffle);
-        await delay(1000);
+        await delay(TIME.slide_vertically);
         
         // >Gera uma sequencia para posicionar as cartas
         this.setState({
@@ -136,15 +143,15 @@ export default class Medium extends Component {
         });
 
         // >Reseta contadores
-        this.next = 1;
+        this.next = 0;
         this.attempts = 0;
 
         this.running = false;
-        this._init();
+        this._init(0);
     }
 
     _handleClick = async (pressed) => {
-        if(this.running) return; else this.running = true;
+        if(this.running || pressed.current._isOpen()) return; else this.running = true;
 
         this.props.moveCounter();
 
@@ -170,7 +177,7 @@ export default class Medium extends Component {
         SOUNDS.error.loadAsync( require(sounds_repo+'error_tone.mp3') );
         SOUNDS.win.loadAsync( require(sounds_repo+'win_sound.mp3') );
 
-        this._init();
+        this._init(TIME.toload);
     }
 
     componentWillUnmount() {

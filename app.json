@@ -7,7 +7,7 @@
       "android",
       "web"
     ],
-    "version": "b1.0.1",
+    "version": "b1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -25,7 +25,10 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.tarllesroman.memorycards"
+      "package": "com.tarllesroman.memorycards",
+      "config": {
+        "googleMobileAdsAppId": "your-ads-app-id"
+      }
     },
     "description": "A unique memory game"
   }

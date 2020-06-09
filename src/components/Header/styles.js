@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { HEADER_DIMENSIONS } from '../../constant'
+
+import { HEADER } from '../../../resources/dimensions';
 
 export default StyleSheet.create({
     header: {
@@ -10,7 +11,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#212121',
         elevation: 5,
-        marginBottom: HEADER_DIMENSIONS.marginBottom,
+        marginBottom: HEADER.marginBottom,
     },
     headerText: {
         fontSize: 15,

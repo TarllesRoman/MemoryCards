@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
+import { t, LOCALES, setLocale } from "../../../resources/locales";
+
 import styles from './styles';
 
 /**
@@ -41,15 +43,16 @@ export default class Header extends Component {
         this.setState( {next: this.props.next, attempts: this.props.attempts});
     }
 
-    _handleClick = () => { 
+    _handleClick = () => {
         this.onReset();
+        setLocale(LOCALES.en);
     }
 
     render() {
         return (
             <View style={styles.header}>
                 <Text style={styles.headerText}>
-                    Próximo nº: {this.state.next}, Jogadas: {this.state.attempts}
+                    {t('next_n')}: {this.state.next}, {t('attempts')}: {this.state.attempts}
                 </Text>
                 
                 <TouchableOpacity style={styles.headerButton}

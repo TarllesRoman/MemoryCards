@@ -1,0 +1,16 @@
+{
+    "next_n": "Next number",
+    "attempts": "Attempts",
+    "congrats": "Congratulations",
+    "back": "Back",
+    "scoreb": "Scoreboard",
+    "save": "Save",
+    "total_att": "Total attempts",
+    "difficulty": "Difficulty",
+    "position": "Position",
+    "_name": "name",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard",
+    "unfair": "Unfair"
+}

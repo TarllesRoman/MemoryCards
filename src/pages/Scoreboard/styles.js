@@ -1,11 +1,11 @@
 import {StyleSheet} from 'react-native';
-import {STATUSBAR_HEIGHT} from '../../constant';
+import { STATUSBAR } from '../../../resources/dimensions';
 
 export default StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 24,
-        marginTop: STATUSBAR_HEIGHT,
+        marginTop: STATUSBAR.height,
     },
 
     header: {

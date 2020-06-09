@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { AdMobBanner } from 'expo-ads-admob';
 
 import styles from './styles';
-
 
 /**
  * TO-DO: Implementar banner do google ads
@@ -16,7 +16,11 @@ export default class Footer extends Component {
     render() {
         return (
             <View style={styles.footer}>
-                <Text styles={styles.footerText}>ads</Text>
+                <AdMobBanner
+                        bannerSize="smartBannerPortrait"
+                        adUnitID="your-unit-id"
+                        onDidFailToReceiveAdWithError={(err) => console.log(err)} 
+                    />
             </View>
         );
     }
