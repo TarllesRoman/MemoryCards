@@ -13,11 +13,10 @@ A ideia para esse jogo surgiu de um trabalho da faculdade, cujo o objetivo era d
 * ps¹: O botão 'refresh' gerará uma nova sequencia de cartas e voltará o jogo no inicio
 * ps²: O placar de jogadores possui espaço para no máximo 5 jogadores
 
-## Sobre essa versão beta_1.0.2
-Versão lançada para testar o AdMob e o recurso multi-idiomas implementato. Também foi refatorado o diretorio que continha constantes úteis para o programa, foi substituido pelo diretório 'resources' e subdiretorios. Essa alteração dará mais flexibilidade ao programador e trará uma coompreensão mais clara da estrutura do código fonte
-* Clique [aqui](https://expo.io/artifacts/cde056e7-2cb6-49ac-8f9e-1c3dd6ea50bf) para fazer o download do arquivo .apk dessa versão 
-* Lembrando que ao clicar no botão 'refresh' além de reiniciar o jogo irá alterar a linguagem do mesmo para inglês, em versões futuras essa funcionalidade será movida para o menu inicial
+## Sobre essa versão beta_1.1.0
+Versão lançada com uma prévia do menu Home, a implementação efetiva do serviço de multilinguagem, e também, foi adicionado o recurso de preferencias do usuário. Também foram recalibradas as dimensões usadas, agora elas usam mais contas porém estão mais ajustaveis. No mais, continua da mesma maneira da versão anterior vBeta_1.0.2
+* Clique [aqui](https://expo.io/artifacts/0dd7d076-ec17-40ce-9547-5c5988b9785d) para fazer o download do arquivo .apk dessa versão 
 
 ## Para a próxima versão
-- [ ] Adicionar menu inicial
+- [ ] Adicionar barra temporizadora, essa barra irá demonstrar o tempo restante para sequencia ser memorizada.
 - [ ] Adicionar menu para seleção de dificuldades

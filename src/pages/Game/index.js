@@ -7,8 +7,11 @@ import Footer from '../../components/Footer';
 import { createWinner, storeWinners, getWinners } from '../../../resources/tools';
 import { t } from "../../../resources/locales";
 
-//Posteriormente o level será passado por parametro a partir da tela de escolha do usuario
 import Medium from '../../components/Levels/Medium';
+
+const levels = {
+    "medium": Medium,
+}
 
 export default class Game extends Component {
     constructor (props) {
@@ -22,10 +25,11 @@ export default class Game extends Component {
         this.header_ref = createRef();
         this.level_ref = createRef();
 
-        this.level = Medium;
-        this.complexity = "medium";
+        this.complexity = props.route.params.complexity;
+        this.level = levels[this.complexity];
 
         this.attempts = 0;
+
         this.navigator = props.navigation;
         this.scoreBoard = [];
     }

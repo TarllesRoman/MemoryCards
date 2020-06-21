@@ -12,5 +12,9 @@
     "easy": "Easy",
     "medium": "Medium",
     "hard": "Hard",
-    "unfair": "Unfair"
+    "unfair": "Unfair",
+    "game_name": "Memory Cards",
+    "play": "Play",
+    "rules": "Rules",
+    "about": "About"
 }

@@ -2,18 +2,28 @@ import React, { Component } from 'react';
 import { Animated, Easing, TouchableOpacity, Image } from 'react-native';
 
 import styles from './styles';
-import { TIME } from '../../../resources/dimensions';
+
+/** 
+ * Tempo em ms configurados para as animações acontecerem
+ */
+export const TIMER = {
+    slide_vertically: 1000,
+    slide_horizontally: 1000,
+    stagger: 100,
+    open: 1000,
+    close: 1000
+}
 
 /**
  * Abre todas as cartas do array utilizando o metodo Animated.stagger,
  *  cada carta demora 1" para abrir e o atraso entre cada animação é de 100ms
  */
 export function open_all (cards) {
-    Animated.stagger(TIME.stagger, 
+    Animated.stagger(TIMER.stagger, 
         cards.map( card => {
             return Animated.timing( card.state.zspin, {
                 toValue: 2,
-                duration: TIME.open,
+                duration: TIMER.open,
                 asing: Easing.linear
             })
         })
@@ -30,12 +40,12 @@ export function close_all (cards) {
     sequence_1 = cards.map( card => {
         return Animated.timing( card.state.zspin, {
             toValue: 0,
-            duration: TIME.close,
+            duration: TIMER.close,
             asing: Easing.linear
         })
     });
 
-    Animated.stagger(TIME.stagger, sequence_1).start( ); 
+    Animated.stagger(TIMER.stagger, sequence_1).start( ); 
 }
 
 /**
@@ -82,7 +92,7 @@ export default class Card extends Component {
     _open = () => {
         Animated.timing( this.state.zspin, {
             toValue: 2,
-            duration: TIME.open,
+            duration: TIMER.open,
             asing: Easing.linear
         }).start();
     }
@@ -91,7 +101,7 @@ export default class Card extends Component {
     _close = () => {
         Animated.timing( this.state.zspin, {
             toValue: 0,
-            duration: TIME.close,
+            duration: TIMER.close,
             asing: Easing.linear
         }).start();
     }
@@ -100,7 +110,7 @@ export default class Card extends Component {
     _slideVertically = (to) => {
         Animated.timing(this.state.yval, {
             toValue: to,
-            duration: TIME.slide_vertically,
+            duration: TIMER.slide_vertically,
             asing: Easing.linear
         }).start();
     }
@@ -109,7 +119,7 @@ export default class Card extends Component {
     _slideHorizontally = (to) => {
         Animated.timing(this.state.xval, {
             toValue: to,
-            duration: TIME.slide_horizontally,
+            duration: TIMER.slide_horizontally,
             asing: Easing.linear
         }).start();
     }

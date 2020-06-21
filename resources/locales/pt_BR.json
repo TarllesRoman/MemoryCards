@@ -12,5 +12,9 @@
     "easy": "Fácil",
     "medium": "Médio",
     "hard": "Difícil",
-    "unfair": "Injusto"
+    "unfair": "Injusto",
+    "game_name": "Memory Cards",
+    "play": "Jogar",
+    "rules": "Regras",
+    "about": "Sobre"
 }

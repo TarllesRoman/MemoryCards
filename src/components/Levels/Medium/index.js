@@ -3,12 +3,9 @@ import { View } from 'react-native';
 import { Audio } from 'expo-av';
 
 import styles from './styles';
-import Card, { open_all, close_all } from '../../Card';
-import { CONTAINER, TIME } from '../../../../resources/dimensions';
+import Card, { open_all, close_all, TIMER } from '../../Card';
+import { SLIDE } from '../../../../resources/dimensions';
 import  { delay, shuffle, playSound } from '../../../../resources/tools';
-
-const slide_vertical_value = CONTAINER.height/2.0 + 15
-const slide_horizontal_value = (CONTAINER.width/3.0) * 2
 
 const deck = '../../../../assets/Decks/Mask/Spades/';
 const card_images = [
@@ -27,6 +24,9 @@ const SOUNDS = {
     win: new Audio.Sound(),
 }
 
+TIMER.toload = 0;
+TIMER.toshow = 5000;
+
 export default class Medium extends Component {
     constructor (props) {
         super(props);
@@ -43,6 +43,8 @@ export default class Medium extends Component {
         this.attempts = 0;
         this.running = false;
     }
+
+    
 
     open_cards() {
         let cards = [];
@@ -79,33 +81,34 @@ export default class Medium extends Component {
     }
 
     //Recebe o tempo de renderização das cartas, aguarda tal tempo antes de iniciar o jogo
-    _init = async (wait) => {
+    _init = async () => {
         if(this.running) return;
         else this.running = true;
 
-        await delay(wait);
-
-        //Mostra todas as cartas e após 2" começa a embaralhar
+        //Mostra todas as cartas
         this.open_cards();
-        await delay(TIME.open + (TIME.stagger * 9));
+        
+        await delay(TIMER.open + (TIMER.stagger * 9) + TIMER.toshow);
 
         // Embaralhamento 1, troca a primeira e ultima linhas
-        this.move_line(slide_vertical_value, this.cards_ref[0]);
-        this.move_line(slide_vertical_value * -1, this.cards_ref[2]);
+        this.move_line(SLIDE.vertical, this.cards_ref[0]);
+        this.move_line(SLIDE.vertical * -1, this.cards_ref[2]);
         playSound(SOUNDS.shuffle);
-        await delay(TIME.slide_vertically);
+        
+        await delay(TIMER.slide_vertically * 2);
 
         // Embaralhamento 2, troca a primeira e ultima colunas
-        this.move_column(slide_horizontal_value,
+        this.move_column(SLIDE.horizontal,
             this.cards_ref[0][0], this.cards_ref[1][0], this.cards_ref[2][0]);
-        this.move_column(slide_horizontal_value * -1,
+        this.move_column(SLIDE.horizontal * -1,
             this.cards_ref[0][2], this.cards_ref[1][2], this.cards_ref[2][2]);
         playSound(SOUNDS.shuffle);
-        await delay(TIME.slide_horizontally + TIME.toshow);
+
+        await delay(TIMER.slide_horizontally * 2);
 
         //Depois de embaralhar fecha as cartas
         this.close_cards();
-        await delay(TIME.close + (TIME.stagger * 9));
+        await delay(TIMER.close + (TIMER.stagger * 9));
         this.next = 1;
 
         this.running = false;
@@ -123,7 +126,7 @@ export default class Medium extends Component {
         if(this.running) return; else this.running = true;
         // >Fecha todas as cartas,
         this.close_cards();
-        await delay(TIME.close + (TIME.stagger * (this.next-1)));
+        await delay(TIMER.close + (TIMER.stagger * (this.next-1)));
 
         // >Volta as cartas para a sua posição original
         this.move_column(0,
@@ -131,11 +134,11 @@ export default class Medium extends Component {
         this.move_column(0,
             this.cards_ref[0][2], this.cards_ref[1][2], this.cards_ref[2][2]);
         playSound(SOUNDS.shuffle);
-        await delay(TIME.slide_horizontally);
+        await delay(TIMER.slide_horizontally);
         this.move_line(0, this.cards_ref[0]);
         this.move_line(0, this.cards_ref[2]);
         playSound(SOUNDS.shuffle);
-        await delay(TIME.slide_vertically);
+        await delay(TIMER.slide_vertically);
         
         // >Gera uma sequencia para posicionar as cartas
         this.setState({
@@ -147,7 +150,7 @@ export default class Medium extends Component {
         this.attempts = 0;
 
         this.running = false;
-        this._init(0);
+        this._init();
     }
 
     _handleClick = async (pressed) => {
@@ -171,13 +174,14 @@ export default class Medium extends Component {
         this.running = false;
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         SOUNDS.open.loadAsync( require(sounds_repo+'card_opening.mp3') );
         SOUNDS.shuffle.loadAsync( require(sounds_repo+'card_slide.mp3') );
         SOUNDS.error.loadAsync( require(sounds_repo+'error_tone.mp3') );
         SOUNDS.win.loadAsync( require(sounds_repo+'win_sound.mp3') );
 
-        this._init(TIME.toload);
+        await delay(TIMER.toload);
+        this._init();
     }
 
     componentWillUnmount() {

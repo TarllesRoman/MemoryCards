@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import {ASKEY_SCOREBOARD} from '../keys';
+import {ASKEY_SCOREBOARD, ASKEY_LOCALE} from '../keys';
 
 
 //Reproduz o objeto recebido a partir de seu 1 ms, o objeto deve ser do tipo Audio.Sound disponivel no pacote 'expo-av'
@@ -44,6 +44,7 @@ export const storeWinners = async (subkey, winners) => {
         await AsyncStorage.setItem(`${ASKEY_SCOREBOARD}_${subkey}`, jsonValue);
     } catch (e) {
         console.log("ERRO ao salvar jogadores");
+        console.error(e);
     }
 }
 
@@ -54,5 +55,6 @@ export const getWinners = async (subkey) => {
         return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch(e) {
         console.log("ERRO ao obter jogadores");
+        console.error(e);
     }
 }

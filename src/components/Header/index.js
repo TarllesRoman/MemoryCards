@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-import { t, LOCALES, setLocale } from "../../../resources/locales";
+import { t } from "../../../resources/locales";
 
 import styles from './styles';
 
@@ -45,7 +45,6 @@ export default class Header extends Component {
 
     _handleClick = () => {
         this.onReset();
-        setLocale(LOCALES.en);
     }
 
     render() {

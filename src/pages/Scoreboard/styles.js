@@ -5,7 +5,8 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 24,
-        marginTop: STATUSBAR.height,
+        paddingTop: STATUSBAR.height,
+        backgroundColor: '#CFD8DC',
     },
 
     header: {

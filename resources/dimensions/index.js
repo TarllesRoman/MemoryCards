@@ -26,23 +26,22 @@ export const HEADER = {
   
 export const FOOTER = {
    height: CONTAINER.height/12.0,
+   width: CONTAINER.width,
 }
   
 export const TABLE = {
-   height: CONTAINER.height/12.0 * 10,
+   height: CONTAINER.height/1.2, // == CONTAINER.height/12.0 * 10
+   width: CONTAINER.width,
+   vertical_spacing: height/6,
+   horizontal_spacing: width/4,
 }
   
 export const CARD = {
-   width: (CONTAINER.width - 80)/3.0,
-   height: (TABLE.height - 100)/3.0,
+   width: (CONTAINER.width - TABLE.horizontal_spacing)/3.0,
+   height: (TABLE.height - TABLE.vertical_spacing)/3.0,
 }
 
-export const TIME = {
-    toload: 1500,
-    toshow: 2000,
-    slide_vertically: 1000,
-    slide_horizontally: 1000,
-    stagger: 100,
-    open: 1000,
-    close: 1000
+export const SLIDE = {
+    vertical: CONTAINER.height/1.9,
+    horizontal: CONTAINER.width/1.5
 }
