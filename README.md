@@ -15,7 +15,7 @@ A ideia para esse jogo surgiu de um trabalho da faculdade, cujo o objetivo era d
 
 ## Sobre essa versão beta_1.1.0
 Versão lançada com uma prévia do menu Home, a implementação efetiva do serviço de multilinguagem, e também, foi adicionado o recurso de preferencias do usuário. Também foram recalibradas as dimensões usadas, agora elas usam mais contas porém estão mais ajustaveis. No mais, continua da mesma maneira da versão anterior vBeta_1.0.2
-* Clique [aqui](https://expo.io/artifacts/0dd7d076-ec17-40ce-9547-5c5988b9785d) para fazer o download do arquivo .apk dessa versão 
+* Clique [aqui](https://drive.google.com/file/d/1COA5M9gL5_fZmfNyLnWOXULQ_SJn0DZb/view?usp=sharing) para fazer o download do arquivo .apk dessa versão 
 
 ## Para a próxima versão
 - [ ] Adicionar barra temporizadora, essa barra irá demonstrar o tempo restante para sequencia ser memorizada.
