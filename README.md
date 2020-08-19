@@ -18,5 +18,6 @@ Versão lançada com uma prévia do menu Home, a implementação efetiva do serv
 * Clique [aqui](https://expo.io/artifacts/0dd7d076-ec17-40ce-9547-5c5988b9785d) para fazer o download do arquivo .apk dessa versão 
 
 ## Para a próxima versão
-- [ ] Adicionar barra temporizadora, essa barra irá demonstrar o tempo restante para sequencia ser memorizada.
-- [ ] Adicionar menu para seleção de dificuldades
+- [x] Adicionar barra temporizadora, essa barra irá demonstrar o tempo restante para sequencia ser memorizada.
+- [x] Adicionar menu para seleção de dificuldades
+- [ ] Adicionar demais níveis de dificuldade

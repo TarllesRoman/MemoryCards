@@ -3,7 +3,12 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { ASKEY_LOCALE } from '../keys';
 import { setLocale } from '../locales';
 
+import * as decks from '../../assets/Decks';
+
 export default {
+    deck: () => {
+        return decks.Mask;
+    },
     language: async () => {
         try {
             const jsonValue = await AsyncStorage.getItem(`${ASKEY_LOCALE}`);

@@ -16,11 +16,11 @@ export default class Footer extends Component {
     render() {
         return (
             <View style={styles.footer}>
-                <AdMobBanner
+                {/**<AdMobBanner
                         bannerSize="smartBannerPortrait"
                         adUnitID="your-ad-unit-id-here"
                         onDidFailToReceiveAdWithError={ (err) => console.log(err) } 
-                    />
+                />*/}
             </View>
         );
     }

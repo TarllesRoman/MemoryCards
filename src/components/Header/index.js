@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import * as Progress from 'react-native-progress';
 
 import { t } from "../../../resources/locales";
 
@@ -16,31 +17,41 @@ import styles from './styles';
  *      - attempts      : Valor inicial exibido em 'Jogadas'
  */
 export default class Header extends Component {
-    constructor (props) {  
+    constructor(props) {
         super(props);
         this.onReset = props.onreset;
         this.state = {
             next: props.next,
-            attempts: props.attempts
+            attempts: props.attempts,
+            progress: 1,
+            timing: 0
         }
     }
 
-    _getNext = () => this.state.next;
-    _setNext(next){
-        this.setState({next: next});
+    countDown = (timing) => {
+        this.setState({ timing, progress: 0});
     }
 
-    _getAttempts = () => this.state.attempts; 
+    countUp = (timing) => {
+        this.setState({ timing, progress: 1});
+    }
+
+    _getNext = () => this.state.next;
+    _setNext(next) {
+        this.setState({ next: next });
+    }
+
+    _getAttempts = () => this.state.attempts;
     _setAttempts(attempts) {
-        this.setState({attempts: attempts});
+        this.setState({ attempts: attempts });
     }
 
     _setCounters = (next, attempts) => {
-        this.setState( {next: next, attempts:  attempts});
+        this.setState({ next: next, attempts: attempts });
     }
 
     _resetCounters = () => {
-        this.setState( {next: this.props.next, attempts: this.props.attempts});
+        this.setState({ next: this.props.next, attempts: this.props.attempts });
     }
 
     _handleClick = () => {
@@ -49,17 +60,26 @@ export default class Header extends Component {
 
     render() {
         return (
-            <View style={styles.header}>
-                <Text style={styles.headerText}>
-                    {t('next_n')}: {this.state.next}, {t('attempts')}: {this.state.attempts}
-                </Text>
-                
-                <TouchableOpacity style={styles.headerButton}
-                    onPress={ this._handleClick }>
-                        <Feather name="refresh-cw" style={styles.headerButtonText}/>
-                </TouchableOpacity>
+            <>
+                <View style={styles.header}>
+                    <Text style={styles.headerText}>
+                        {`${t('next_n')}: ${this.state.next}, ${t('attempts')}: ${this.state.attempts}`}
+                    </Text>
 
-            </View>
+                    <TouchableOpacity style={styles.headerButton}
+                        onPress={this._handleClick}>
+                        <Text style={styles.headerButtonText}>{t('restart')}</Text>
+                        <Feather name="refresh-cw" style={[styles.headerButtonText, {fontSize: 16}]}/>
+                    </TouchableOpacity>
+                </View>
+                <Progress.Bar progress={this.state.progress} 
+                    width={null}
+                    style={styles.progress}
+                    color="#8BC34A"
+                    animationType="timing" 
+                    animationConfig={{ duration: this.state.timing }} 
+                />
+            </>
         );
     }
 

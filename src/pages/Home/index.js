@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 
 import styles from './styles';
 import { t, LOCALES, setLocale } from "../../../resources/locales";
-import prefs from '../../../resources/preferences';
+import preferences from '../../../resources/preferences';
 
 
 const logo = require('../../../assets/icon.png');
@@ -21,8 +21,8 @@ export default class Home extends Component {
     }
 
     async componentDidMount () {
-        let lg = await prefs.language();
-        if(lg == null) await prefs.setLanguage(this.state.lang);
+        let lg = await preferences.language();
+        if(lg == null) await preferences.setLanguage(this.state.lang);
         else {
             setLocale(lg);
             this.setState({lang: lg});
@@ -30,17 +30,22 @@ export default class Home extends Component {
     }
 
     async setLanguage( language ) {
-        await prefs.setLanguage(language);
+        await preferences.setLanguage(language);
         this.setState({lang: language});
     }
 
     _play = () => {
-        this.navigator.push('Game', { complexity: "medium" });
+        this.navigator.push('LevelSelect');
     }
-
+    
     _scoreboard = () => {
-        this.navigator.push('Scoreboard', { complexity: "medium" });
+        this.navigator.push('Scoreboard', { complexity: "easy" });
     }
+    
+    _about = () => {
+        
+    }
+    
     
     
     render() {
@@ -62,7 +67,7 @@ export default class Home extends Component {
                     <Text style={styles.buttonText}>{ t('rules') }</Text>
                 </TouchableOpacity>
                 
-                <TouchableOpacity style={[styles.button, {marginBottom: 0}]} onPress={ () => console.log("button")}>
+                <TouchableOpacity style={[styles.button, {marginBottom: 0}]} onPress={ this._about }>
                     <Text style={styles.buttonText}>{ t('about') }</Text>
                 </TouchableOpacity>
                 

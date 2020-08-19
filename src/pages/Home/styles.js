@@ -18,12 +18,12 @@ export default StyleSheet.create({
     title: {
         fontSize: 36,
         fontWeight: 'bold',
-        color: '#333333',
+        color: '#212121',
         marginTop: 4,
         marginBottom: 32,
     },
     button: {
-       backgroundColor: '#4d4d4d',
+       backgroundColor: '#212121',
        borderRadius: 8,
        padding: 16,
        elevation: 2,
@@ -31,7 +31,8 @@ export default StyleSheet.create({
        marginBottom: 24,
     },
     buttonText: {
-        color: '#d5cec2',
+        color: '#F2EBE5',
+        fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center',
         fontFamily: 'sans-serif-medium'
@@ -47,7 +48,7 @@ export default StyleSheet.create({
         marginHorizontal: 5
     },
     flag_selected: {
-        backgroundColor: '#4d4d4d',
+        backgroundColor: '#212121',
         borderRadius: 8,
     }
 

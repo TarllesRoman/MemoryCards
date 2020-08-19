@@ -7,9 +7,11 @@ import Footer from '../../components/Footer';
 import { createWinner, storeWinners, getWinners } from '../../../resources/tools';
 import { t } from "../../../resources/locales";
 
+import Easy from '../../components/Levels/Easy';
 import Medium from '../../components/Levels/Medium';
 
 const levels = {
+    "easy": Easy,
     "medium": Medium,
 }
 
@@ -128,15 +130,16 @@ export default class Game extends Component {
                 </Modal>
 
                 <Header ref={this.header_ref}
-                        next={1}
-                        attempts={0}
-                        onreset={this._reset}
+                    next={1}
+                    attempts={0}
+                    onreset={this._reset}
                 />
 
                 <this.level ref={this.level_ref}
                     onWin={this._win} 
                     moveCounter={this._incrementMove}
                     toNext={(next) => this._incrementNext(next)}
+                    timer={this.header_ref}
                 />
                 
                 <Footer />

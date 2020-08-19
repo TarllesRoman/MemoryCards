@@ -11,7 +11,6 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#212121',
         elevation: 5,
-        marginBottom: HEADER.marginBottom,
     },
     headerText: {
         fontSize: 15,
@@ -21,16 +20,25 @@ export default StyleSheet.create({
     headerButton: {
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'center',
         borderRadius: 3,
         borderColor: '#8BC34A',
         borderStyle: 'solid',
         borderWidth: 1,
-        padding: 10,
+        paddingVertical: 10,
     },
     headerButtonText: {
-        fontSize: 15,
+        fontSize: 12,
         fontWeight: 'bold',
-        color: '#8BC34A'
+        color: '#8BC34A',
+        marginHorizontal: 5
     },
-
+    progress: {
+        borderWidth: 0,
+        borderRadius: 0,
+        width: '100%',
+        flexDirection: 'column',
+        borderColor: '#8BC34A',
+        marginBottom: HEADER.marginBottom,
+    }
 }); 

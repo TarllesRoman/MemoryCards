@@ -6,7 +6,7 @@
     "scoreb": "Scoreboard",
     "save": "Save",
     "total_att": "Total attempts",
-    "difficulty": "Difficulty",
+    "difficulty": "Complexity",
     "position": "Position",
     "_name": "name",
     "easy": "Easy",
@@ -16,5 +16,6 @@
     "game_name": "Memory Cards",
     "play": "Play",
     "rules": "Rules",
-    "about": "About"
+    "about": "About",
+    "restart": "Restart"
 }

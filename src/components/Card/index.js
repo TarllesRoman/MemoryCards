@@ -55,7 +55,7 @@ export function close_all (cards) {
  *   - background    : imagem a ser exibida quando a carta esta fechada
  *   - onpress       : função a ser executada quando a carta é pressionada
  *   - number        : o numero da carta que será exibida (A-9, J, Q, K)
- *   -? opened       : decide se a carta deve ser renderizada aberta ou fechada, default is false
+ *   -? opened       : decide se a carta deve ser renderizada aberta(true) ou fechada(false), default is false
  * 
  * ps: Cada carta já está dentro de um ToucheableOpacity
  */
@@ -126,13 +126,13 @@ export default class Card extends Component {
 
     render () {
         return (
-            <Animated.View style={[styles.card,
-                { top: this.state.yval },
-                { left: this.state.xval },
-                { transform: [{rotateY: this.zval}] }
-                ]}
+            <Animated.View style={{
+                top: this.state.yval,
+                left: this.state.xval,
+                transform: [{rotateY: this.zval}] 
+                }}
             >
-                <TouchableOpacity onPress={this.props.onpress} style={styles.cardImage}>
+                <TouchableOpacity onPress={this.props.onpress} style={styles.card}>
                     <Image style={styles.cardImage} source={ (this.state.opened)? this.state.front : this.state.background }/>
                 </TouchableOpacity>
             </Animated.View>

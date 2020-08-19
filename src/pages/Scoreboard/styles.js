@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import { STATUSBAR } from '../../../resources/dimensions';
 
 export default StyleSheet.create({
@@ -29,7 +29,12 @@ export default StyleSheet.create({
     headerTextBold: {
         fontWeight: 'bold'
     },
-
+    level: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 8,
+    },
     listHeader: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -48,13 +53,33 @@ export default StyleSheet.create({
     playerInfos: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginHorizontal: 5,
     },
     playerProperty: {
         fontSize: 14,
         color: '#41414d',
         fontWeight: 'bold'
     },
-
-
+    button: {
+        flexDirection: 'row',
+        backgroundColor: '#212121',
+        borderRadius: 8,
+        padding: 16,
+        elevation: 2,
+        width: 100,
+        marginBottom: 24,
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'space-around'
+    },
+    icon: {
+        color: '#F2EBE5',
+    },
+    buttonText: {
+        color: '#F2EBE5',
+        fontSize: 16,
+        fontWeight: 'bold',
+        fontFamily: 'sans-serif-medium'
+    },
 });
