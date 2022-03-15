@@ -25,7 +25,10 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.tarllesroman.memorycards"
+      "package": "com.tarllesroman.memorycards",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-3960094842497316~6056172731"
+      }
     },
     "description": "A unique memory game"
   }

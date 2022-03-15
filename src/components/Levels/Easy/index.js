@@ -1,10 +1,11 @@
 import React, { Component, createRef } from 'react';
-import { View } from 'react-native';
+import { View, ToastAndroid } from 'react-native';
 import { Audio } from 'expo-av';
 
 import Card, { open_all, close_all, TIMER } from '../../Card';
 import { delay, shuffle, playSound } from '../../../../resources/tools';
 import preferences from '../../../../resources/preferences';
+import { t } from "../../../../resources/locales";
 
 import styles from './styles';
 
@@ -18,12 +19,13 @@ const SOUNDS = {
     win: new Audio.Sound(),
 }
 
-TIMER.toload = 0;
-TIMER.toshow = 5000;
-
 export default class Easy extends Component {
     constructor(props) {
         super(props);
+
+        TIMER.toload = 1750;
+        TIMER.toshow = 5000;
+        TIMER.toinit = 8000;
 
         this.state = {
             sequence: shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9]),
@@ -35,7 +37,7 @@ export default class Easy extends Component {
         ];
         this.next = 0;
         this.attempts = 0;
-        this.running = false;
+        this.running = true;
     }
 
     open_cards() {
@@ -74,16 +76,11 @@ export default class Easy extends Component {
 
     //Recebe o tempo de renderização das cartas, aguarda tal tempo antes de iniciar o jogo
     _init = async () => {
-        this.setState({ progress_time: 0 })
-        if (this.running) return;
-        else this.running = true;
-
         //Mostra todas as cartas
         this.open_cards();
 
-        let delay_time = TIMER.open + (TIMER.stagger * 9) + TIMER.toshow
-        this.props.timer.current.countDown(delay_time + 2000);
-        await delay(delay_time);
+        this.props.timer.current.countDown(TIMER.toinit);
+        await delay(TIMER.open + (TIMER.stagger * 9) + TIMER.toshow);
 
         //fecha as cartas
         this.close_cards();
@@ -102,7 +99,7 @@ export default class Easy extends Component {
      *  >Executa o método init
      */
     _reinit = async () => {
-        if (this.running) return; else this.running = true;
+        if (this.running) return Promise.reject("Running other function"); else this.running = true;
         // >Fecha todas as cartas,
         this.close_cards();
         this.props.timer.current.countUp((TIMER.close + TIMER.stagger * (this.next - 1)));
@@ -120,20 +117,24 @@ export default class Easy extends Component {
         this.next = 0;
         this.attempts = 0;
 
-        this.running = false;
         this._init();
     }
 
     _handleClick = async (pressed) => {
-        if (this.running || pressed.current._isOpen()) return; else this.running = true;
+        if (this.running) {
+            ToastAndroid.show(t('wait'), ToastAndroid.SHORT);
+            return;
+        } else if (pressed.current._isOpen()) return;
+        else this.running = true;
 
-        this.props.moveCounter();
+        this.props.attemptsCounter();
 
         if (pressed.current._number === this.next) {
             this.props.toNext(++this.next);
             playSound(SOUNDS.open);
             pressed.current._open();
         } else {
+            pressed.current._shake();
             playSound(SOUNDS.error);
         }
 
@@ -145,7 +146,7 @@ export default class Easy extends Component {
         this.running = false;
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         SOUNDS.open.loadAsync(require(sounds_repo + 'card_opening.mp3'));
         SOUNDS.shuffle.loadAsync(require(sounds_repo + 'card_slide.mp3'));
         SOUNDS.error.loadAsync(require(sounds_repo + 'error_tone.mp3'));

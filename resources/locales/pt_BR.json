@@ -17,5 +17,21 @@
     "play": "Jogar",
     "rules": "Regras",
     "about": "Sobre",
-    "restart": "Recomeçar"
+    "restart": "Recomeçar",
+    "loading": "Carregando",
+    "wait": "Espere",
+    "rule_1": "Para vencer o jogo você deve abrir todas as 9 cartas, sequencialmente, em ordem crescente.",
+    "rule_2": "As cartas obedecem seu valor referente ao baralho francês, sendo o A(ás) a menor carta que representa o valor 1.",
+    "rule_3": "Sendo assim, a sequência em que você deverá abrir as cartas é: A, 2, 3, 4, ..., 9.",
+    "rule_4": "Ao clicar em uma carta será contada 1 jogada.",
+    "rule_5": "Abra todas as cartas, com o menor número de jogadas que conseguir, para alcançar e manter sua posição no placar local.",
+    "rule_6": "O placar local registra os 5 melhores jogadores de cada dificuldade.",
+    "rule_7": "Não seja ganancioso! Começe pelo nível fácil e vá jogando os outros conforme sua habilidade.",
+    "about_1": "Esse jogo foi criado para estudo do framework React Native, o código fonte e demais informações estão disponíveis através do Github do desenvolvedor que é informado abaixo.",
+    "about_2": "Desenvolvido por:  Tarlles Roman Sfredo.",
+    "about_3": "Imagem da tela de abertura, todos os direitos reservados a Venexiana Dark Playing Cards.",
+    "about_4": "Imagem das \"Costas\" das cartas, todos os direitos reservados a Venexiana Dark Playing Cards.",
+    "about_5": "Imagens supracitadas obtidas em https://www.kickstarter.com/projects/709754364/venexiana-dark-playing-cards em 02/09/2020.",
+    "about_6": "Efeitos sonoros obtidos de https://www.zapsplat.com em 02/09/2020.",
+    "about_7": "Contatos:"
 }

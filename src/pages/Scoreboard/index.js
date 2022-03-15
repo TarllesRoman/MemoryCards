@@ -111,7 +111,7 @@ export default class Scoreboard extends Component {
                             onPress={() => this.init(complexities[++this.index_complexity])}
                         />
                     </View>
-                    <Text style={styles.headerText}>{t('difficulty')}: {this.level}</Text>
+                    <Text style={styles.headerText}>{this.level}</Text>
                 </View>
 
 

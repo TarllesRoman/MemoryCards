@@ -36,17 +36,13 @@ export default class LevelSelect extends Component {
                         color: '#000'
                     }]} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.button, { opacity: 0.45 }]}
-                    onPress={() => ToastAndroid.show("NOT YET", ToastAndroid.SHORT)}
-                >
+                <TouchableOpacity style={styles.button} onPress={() => this._play('hard')}>
                     <Text style={styles.buttonText}>{t('hard')}</Text>
                     <MaterialCommunityIcons name="cards-heart" size={35} style={[styles.icon, {
                         color: '#DC143C'
                     }]} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.button, { opacity: 0.45 }]}
-                    onPress={() => ToastAndroid.show("NOT YET", ToastAndroid.SHORT)}
-                >
+                <TouchableOpacity style={styles.button} onPress={() => this._play('unfair')}>
                     <Text style={styles.buttonText}>{t('unfair')}</Text>
                     <MaterialCommunityIcons name="cards-club" size={35} style={[styles.icon, {
                         color: '#000'

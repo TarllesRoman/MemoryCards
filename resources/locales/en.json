@@ -17,5 +17,21 @@
     "play": "Play",
     "rules": "Rules",
     "about": "About",
-    "restart": "Restart"
+    "restart": "Restart",
+    "loading": "Loading",
+    "wait": "Wait",
+    "rule_1": "To win the game you must open all 9 cards, sequentially, in ascending order.",
+    "rule_2": "The cards obey their value referring to the French deck, with A (ace) being the smallest card that represents the value 1.",
+    "rule_3": "Therefore, the sequence in which you must open the cards is: A, 2, 3, 4, ..., 9.",
+    "rule_4": "1 move will be counted whenever you click on a card.",
+    "rule_5": "Open all the cards, with the fewest moves that you can, to reach and maintain your position on the local scoreboard.",
+    "rule_6": "The local scoreboard records the top 5 players for each difficulty.",
+    "rule_7": "Do not be greedy! Start at the easy level and start playing others according to your skill.",
+    "about_1": "This game was created with the objective of studying the React Native framework, the source code and other information are available through the developer's Github which is informed below.",
+    "about_2": "Developed by: Tarlles Roman Sfredo.",
+    "about_3": "Image of the splash screen, all rights reserved to Venexiana Dark Playing Cards.",
+    "about_4": "Image of the \"back\" of the cards, all rights reserved to Venexiana Dark Playing Cards.",
+    "about_5": "Above images obtained at https://www.kickstarter.com/projects/709754364/venexiana-dark-playing-cards on 9/2/2020.",
+    "about_6": "Sound effects obtained from https://www.zapsplat.com on 02/09/2020.",
+    "about_7": "Contacts:"
 }

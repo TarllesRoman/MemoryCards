@@ -10,7 +10,7 @@ A ideia para esse jogo surgiu de um trabalho da faculdade, cujo o objetivo era d
 - Após todas as cartas terem sido fechadas, tente se lembrar da posição em que estavam.
 - Tente abrir todas as cartas, em sequencia numérica, com o menor numero de jogadas que conseguir.
 - Caso o número de jogadas realizadas seja baixo o bastante você poderá registrar seu nome no placar de jogadores.
-* ps¹: O botão 'refresh' gerará uma nova sequencia de cartas e voltará o jogo no inicio
+* ps¹: O botão 'Recomeçar' gerará uma nova sequencia de cartas e voltará o jogo no inicio
 * ps²: O placar de jogadores possui espaço para no máximo 5 jogadores
 
 ## Sobre essa versão beta_1.2.0
@@ -18,6 +18,5 @@ Versão lançada com uma prévia do menu Home, a implementação efetiva do serv
 * Clique [aqui](https://drive.google.com/file/d/1COA5M9gL5_fZmfNyLnWOXULQ_SJn0DZb/view?usp=sharing) para fazer o download do arquivo .apk da versão anterior que está mais estável
 
 ## Para a próxima versão
-- [x] Adicionar barra temporizadora, essa barra irá demonstrar o tempo restante para sequencia ser memorizada.
-- [x] Adicionar menu para seleção de dificuldades
-- [ ] Adicionar demais níveis de dificuldade
+- [ ] Revisar códigos e teste em usuários finais.
+- [ ] Publicar na PlayStore

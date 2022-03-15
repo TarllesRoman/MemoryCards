@@ -1,5 +1,5 @@
 import React, {Component, createRef} from 'react';
-import { View, Modal, Text, TouchableHighlight, TextInput } from 'react-native';
+import { View, Modal, Text, TouchableHighlight, TextInput, ToastAndroid } from 'react-native';
 
 import styles, {modal_styles} from './styles';
 import Header from '../../components/Header';
@@ -9,10 +9,14 @@ import { t } from "../../../resources/locales";
 
 import Easy from '../../components/Levels/Easy';
 import Medium from '../../components/Levels/Medium';
+import Hard from '../../components/Levels/Hard';
+import Unfair from '../../components/Levels/Unfair';
 
 const levels = {
     "easy": Easy,
     "medium": Medium,
+    "hard": Hard,
+    "unfair": Unfair
 }
 
 export default class Game extends Component {
@@ -53,13 +57,16 @@ export default class Game extends Component {
     }
 
     _reset = () => {
-        this.attempts = 0;
-        this.setState({name: t('_name')});
-        this.header_ref.current._resetCounters();
-        this.level_ref.current._reinit();
+        this.level_ref.current._reinit().then( ()=> {
+            this.attempts = 0;
+            this.setState({name: t('_name')});
+            this.header_ref.current._resetCounters();
+        }).catch(()=> {
+            ToastAndroid.show(t('wait'), ToastAndroid.SHORT);
+        });
     }
 
-    _incrementMove = () => {
+    _incrementAttempts = () => {
         this.header_ref.current._setAttempts(++this.attempts);
     }
 
@@ -137,7 +144,7 @@ export default class Game extends Component {
 
                 <this.level ref={this.level_ref}
                     onWin={this._win} 
-                    moveCounter={this._incrementMove}
+                    attemptsCounter={this._incrementAttempts}
                     toNext={(next) => this._incrementNext(next)}
                     timer={this.header_ref}
                 />

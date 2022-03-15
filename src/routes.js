@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import Game from './pages/Game';
 import Scoreboard from './pages/Scoreboard';
 import LevelSelect from './pages/LevelSelect';
+import Rules from './pages/Rules';
+import About from './pages/About';
 
 const AppStack = createStackNavigator();
 
@@ -17,6 +19,8 @@ export default function Routes() {
                 <AppStack.Screen name="Game" component={Game} />
                 <AppStack.Screen name="Scoreboard" component={Scoreboard} />
                 <AppStack.Screen name="LevelSelect" component={LevelSelect} />
+                <AppStack.Screen name="Rules" component={Rules} />
+                <AppStack.Screen name="About" component={About} />
             </AppStack.Navigator>
         </NavigationContainer>
     );

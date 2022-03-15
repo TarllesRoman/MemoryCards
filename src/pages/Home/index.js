@@ -43,10 +43,12 @@ export default class Home extends Component {
     }
     
     _about = () => {
-        
+        this.navigator.push('About');
     }
-    
-    
+
+    _rules = () => {
+        this.navigator.push('Rules');
+    }
     
     render() {
         return (
@@ -63,7 +65,7 @@ export default class Home extends Component {
                     <Text style={styles.buttonText}>{ t('scoreb') }</Text>
                 </TouchableOpacity>
                 
-                <TouchableOpacity style={styles.button} onPress={ () => console.log("button")}>
+                <TouchableOpacity style={styles.button} onPress={ this._rules }>
                     <Text style={styles.buttonText}>{ t('rules') }</Text>
                 </TouchableOpacity>
                 
